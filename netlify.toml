@@ -1,11 +1,22 @@
 [build]
   command = "echo 'No build required'"
-  publish = "."   # ← ဒါပဲထားပါ (အပြည့်အစုံမထည့်ပါနဲ့)
+  publish = "."
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Content-Type = "application/json"
+    Access-Control-Allow-Origin = "*"
 
 [[headers]]
   for = "/*"
